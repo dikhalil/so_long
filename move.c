@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 12:42:10 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/19 20:23:29 by dikhalil         ###   ########.fr       */
+/*   Created: 2025/09/19 23:12:20 by dikhalil          #+#    #+#             */
+/*   Updated: 2025/09/19 23:13:48 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "so_long.h"
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include "./libft/libft.h"
-#include "./minilibx-linux/mlx.h"
-
-typedef struct s_game
+void move_up(t_game *game)
 {
-    char **map;
-    void *mlx;
-    void *win;
-    void *img[5];
-    int img_width;
-    int img_height;
-    int map_height;
-    int map_width;
-    int player_x;
-    int player_y;
-	int	collect;
-}   t_game;
+    
+}
 
-#endif
+void move_down(t_game *game)
+{
+    
+}
+
+void move_left(t_game *game)
+{
+
+}
+
+void move_right(t_game *game)
+{
+    
+}
