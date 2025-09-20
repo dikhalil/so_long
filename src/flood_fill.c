@@ -6,11 +6,11 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:07:59 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/19 22:07:47 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/20 09:15:01 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 static int isallreached(char **original, char **visited)
 {
@@ -96,7 +96,6 @@ static void fill(t_game game, int x, int y, int height, int width)
 
 void flood_fill(t_game *game)
 {
-	int i;
     t_game tmp;
     
     tmp.map_height = game->map_height;
@@ -108,8 +107,8 @@ void flood_fill(t_game *game)
     fill(tmp, tmp.player_x, tmp.player_y, tmp.map_height, tmp.map_width);
     if (!isallreached(game->map, tmp.map))
     {
-        free_game(&tmp);
+        free_map(tmp.map);
         exit_error(game, "Error: Map has unreachable areas\n");        
     }
-    free_game(&tmp);
+    free_map(tmp.map);
 }

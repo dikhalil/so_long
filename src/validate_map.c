@@ -6,11 +6,11 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:13:18 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/19 17:14:33 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/20 09:14:26 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include <so_long.h>
 
 static int isrectangle(char **map)
 {
@@ -71,12 +71,12 @@ static int isvalidchar(t_game *game)
 			else if (game->map[i][j] == 'E')
 				e++;
 			else if (game->map[i][j] == 'C')
-				game->collect++;
+				game->coins++;
 			else if (game->map[i][j] != '1' && game->map[i][j] != '0' )
 				return (0);
 		}
 	}
-	return (e == 1 && p == 1 && game->collect >= 1);
+	return (e == 1 && p == 1 && game->coins >= 1);
 }
 void check_map(t_game *game)
 {
@@ -88,5 +88,5 @@ void check_map(t_game *game)
 	if (!isenclosed(game))
 		exit_error(game, "Error: Map must be enclosed/surrounded by walls\n");
 	if (!isvalidchar(game))
-		exit_error(game, "Error: Map must contain 1 exit, 1 starting position and at least 1 collectible\n");
+		exit_error(game, "Error: Map must contain 1 exit, 1 starting position and at least 1 coinsible\n");
 }
