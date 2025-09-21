@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 20:29:43 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/21 14:24:58 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:50:08 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void loading_image(t_game *game)
 {
     int i;
-    int width;
-    int height;
     char *image[5];
 
     i = 0;
@@ -27,7 +25,7 @@ void loading_image(t_game *game)
     image[4] = "textures/exit.xpm";
     while (i < 5)
     {
-        game->img[i] = mlx_xpm_file_to_image(game->mlx, image[i], &width, &height);
+        game->img[i] = mlx_xpm_file_to_image(game->mlx, image[i], NULL, NULL);
         if (!game->img[i])
             exit_game(game, "Error: failed loading image", ERROR);
         i++;

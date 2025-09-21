@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:11:28 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/21 14:05:02 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 19:14:07 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,13 @@ void free_map(char **map)
 
 void free_game(t_game *game)
 {
-	int i;
-
-	i = 0;
-	while (i < 5)
-		if (game->img[i])
-		{
-		    mlx_destroy_image(game->mlx, game->img[i]);
-			i++;
-		}
 	free_map(game->map);
-	if (game->mlx && game->win)
+	while (*(game->img))
+	{
+    	mlx_destroy_image(game->mlx, *(game->img));
+ 	    game->img++;
+	}
+	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 	{

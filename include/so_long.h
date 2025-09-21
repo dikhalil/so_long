@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 12:42:10 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/21 14:31:24 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:40:18 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ typedef struct s_game
     void *mlx;
     void *win;
     void *img[5];
-    int img_width;
-    int img_height;
     int map_height;
     int map_width;
     int player_x;

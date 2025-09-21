@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 23:12:20 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/21 14:18:21 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 18:44:47 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ static void try_move(t_game *game, int new_x, int new_y)
 {
     if (game->map[new_y][new_x] == '1')
         return ;
-    if (game->map[new_y][new_x] == 'E' && game->coins > 0)
-        return ;
     if (game->map[new_y][new_x] == 'C')
         game->coins--;
-    if (game->map[new_y][new_x] == 'E' && game->coins == 0)
+    if (game->map[new_y][new_x] == 'E')
+    {
+        if (game->coins > 0)
+            return ;
         exit_game(game, "You win!", SUCCESS);
+    }
     game->map[game->player_y][game->player_x] = '0';
     game->map[new_y][new_x] = 'P';
     game->player_x = new_x;
