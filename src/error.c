@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:11:28 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/20 09:15:05 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:05:02 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void free_game(t_game *game)
 	int i;
 
 	i = 0;
-
-	if (!game)
-		return ;
 	while (i < 5)
 		if (game->img[i])
-		    mlx_destroy_image(game->mlx, game->img[i++]);
+		{
+		    mlx_destroy_image(game->mlx, game->img[i]);
+			i++;
+		}
 	free_map(game->map);
 	if (game->mlx && game->win)
 		mlx_destroy_window(game->mlx, game->win);
@@ -45,9 +45,13 @@ void free_game(t_game *game)
 	}
 }
 
-void exit_error(t_game *game, char *msg)
+void exit_game(t_game *game, char *msg, int status)
 {
-    write(1, msg, ft_strlen(msg));
-	free_game(game);
-    exit(1);
+	if (status)
+		ft_putendl_fd(msg, 2);
+	else
+		ft_putendl_fd(msg, 1);
+	if (game)
+		free_game(game);
+    exit(status);
 }

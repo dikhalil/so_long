@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:07:59 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/20 09:15:01 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:17:20 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int isallreached(char **original, char **visited)
     int j;
     
     i = 0;
-    j = 0;
     while (original[i])
     {
         j = 0;
@@ -64,7 +63,6 @@ static void find_player(t_game *game)
     int j;
     
     i = 0;
-    j = 0;
     while (game->map[i])
     {
         j = 0;
@@ -74,6 +72,7 @@ static void find_player(t_game *game)
             {
                 game->player_x = j;
                 game->player_y = i;
+                return ;
             }
             j++;
         }
@@ -102,13 +101,13 @@ void flood_fill(t_game *game)
     tmp.map_width = game->map_width;
     tmp.map = copy_map(game->map, game->map_height);
     if (!tmp.map)
-        exit_error(game, "Error: malloc failed in flood fill\n"); 
+        exit_game(game, "Error: malloc failed in flood fill", ERROR); 
     find_player(&tmp);
     fill(tmp, tmp.player_x, tmp.player_y, tmp.map_height, tmp.map_width);
     if (!isallreached(game->map, tmp.map))
     {
         free_map(tmp.map);
-        exit_error(game, "Error: Map has unreachable areas\n");        
+        exit_game(game, "Error: Map has unreachable areas", ERROR);        
     }
     free_map(tmp.map);
 }

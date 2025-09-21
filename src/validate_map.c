@@ -6,7 +6,7 @@
 /*   By: dikhalil <dikhalil@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 17:13:18 by dikhalil          #+#    #+#             */
-/*   Updated: 2025/09/20 09:14:26 by dikhalil         ###   ########.fr       */
+/*   Updated: 2025/09/21 14:18:56 by dikhalil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void check_map(t_game *game)
 
 	i = 0;
     if (!isrectangle(game->map))
-		exit_error(game, "Error: Map must be rectangle\n");
+		exit_game(game, "Error: Map must be rectangle", ERROR);
 	if (!isenclosed(game))
-		exit_error(game, "Error: Map must be enclosed/surrounded by walls\n");
+		exit_game(game, "Error: Map must be enclosed/surrounded by walls", ERROR);
 	if (!isvalidchar(game))
-		exit_error(game, "Error: Map must contain 1 exit, 1 starting position and at least 1 coinsible\n");
+		exit_game(game, "Error: Map must contain 1 exit, 1 starting position and at least 1 collectible", ERROR);
 }
