@@ -8,10 +8,11 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 # MLX
-CMLXFLAG = -lmlx -lX11 -lXext -lm
+MLX_DIR = /tmp/mlx_linux
+CMLXFLAG = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
 # Include
-INCLUDE = -I./include
+INCLUDE = -I./include -I$(MLX_DIR)
 
 # Source files
 SRCS =  src/so_long.c \
